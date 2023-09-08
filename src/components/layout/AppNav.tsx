@@ -77,7 +77,7 @@ const AppNav: React.FC = () => {
           <Tooltip title="Git Hub">
             <IconButton size="small" color="primary" aria-label="menu">
               <a
-                href="https://github.com/Ivan-Adamovich"
+                href="https://github.com/Ivan-Adamovich/my-2-do"
                 target="_blank"
                 rel="noreferrer"
               >
