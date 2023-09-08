@@ -33,7 +33,7 @@ const AppNav: React.FC = () => {
       sx={
         darkTheme
           ? { bgcolor: 'background.papier', boxShadow: 'none' }
-          : { bgcolor: 'action.selected', boxShadow: 'none' }
+          : { bgcolor: '#EBEBEB', boxShadow: 'none' }
       }
     >
       <Toolbar
