@@ -1,26 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-function App() {
+import { selectDarkTheme } from './store/selectors';
+import { useAppSelector } from './hooks/hook';
+
+import { useEffect } from 'react';
+
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from 'react-router-dom';
+
+import HomePage from './pages/HomePage';
+import TodoItemPage from './pages/TodoItemPage';
+import NotFoundPage from './pages/NotfoundPage';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<HomePage />} errorElement={<NotFoundPage />} />
+      <Route
+        path="/todos/:id"
+        element={<TodoItemPage />}
+        errorElement={<NotFoundPage />}
+      />
+      <Route path="*" element={<NotFoundPage />} />
+    </>
+  )
+);
+
+const App: React.FC = () => {
+  const darkTheme: boolean = useAppSelector(selectDarkTheme);
+  const appBody = document.body;
+
+  useEffect(() => {
+    if (darkTheme) {
+      appBody.style.backgroundColor = '#121212';
+    } else {
+      appBody.style.backgroundColor = '#fff';
+    }
+  }, [darkTheme]);
+
+  const myTheme = createTheme({
+    palette: {
+      mode: darkTheme ? 'dark' : 'light',
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={myTheme}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <RouterProvider router={router} />
+      </LocalizationProvider>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
