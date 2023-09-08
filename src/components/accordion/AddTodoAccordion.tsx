@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import {
   Typography,
   Stack,
@@ -12,9 +14,21 @@ import PostAddIcon from '@mui/icons-material/PostAdd';
 import AddTodoForm from '../form/AddTodoForm';
 
 const AddTodoAccordion: React.FC = () => {
+  const [expanded, setExpanded] = useState<boolean>(false);
+
+  const handleChange = () => {
+    setExpanded((prev) => !prev);
+  };
+
+  const handleClose = () => {
+    setExpanded(false);
+  };
+
   return (
     <Stack mb={1}>
       <Accordion
+        expanded={expanded}
+        onChange={handleChange}
         sx={{
           boxShadow: 'none',
           pl: 1,
@@ -30,7 +44,7 @@ const AddTodoAccordion: React.FC = () => {
           <Typography sx={{ color: 'primary.main' }}>Add new Task</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <AddTodoForm />
+          <AddTodoForm handleClose={handleClose} />
         </AccordionDetails>
       </Accordion>
     </Stack>

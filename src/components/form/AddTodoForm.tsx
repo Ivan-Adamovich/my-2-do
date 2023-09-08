@@ -13,7 +13,11 @@ import FolderSelectButton from '../button/FolderSelectButton';
 import PickerWithButtonField from '../button/PickerWithButtonField';
 import ImportantButton from '../button/SetImportantButton';
 
-const AddTodoForm = () => {
+interface AddTodoFormProps {
+  handleClose(): void;
+}
+
+const AddTodoForm: React.FC<AddTodoFormProps> = ({ handleClose }) => {
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [folderTitle, setFolderTitle] = useState<string>('');
@@ -49,6 +53,7 @@ const AddTodoForm = () => {
       setDescription('');
       setPlanned('');
       setValue(null);
+      handleClose();
     }
     dispatch(changeSearchTodoTitle(''));
   }, [title, description, important, folderTitle, planned]);
@@ -64,6 +69,7 @@ const AddTodoForm = () => {
         setDescription('');
         setPlanned('');
         setValue(null);
+        handleClose();
       }
       dispatch(changeSearchTodoTitle(''));
     },
@@ -121,11 +127,11 @@ const AddTodoForm = () => {
             important={important}
             toggleImportant={toggleImportant}
           />
+          <PickerWithButtonField value={value} setValue={setValue} />
           <FolderSelectButton
             toggleFolder={toggleFolder}
             folderTitle={folderTitle}
           />
-          <PickerWithButtonField value={value} setValue={setValue} />
         </Stack>
         <Button
           onClick={handleAction}
