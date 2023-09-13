@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 export const useElementHeight = () => {
   const ref: any = useRef();
@@ -11,7 +11,7 @@ export const useElementHeight = () => {
     })
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     observer.current.observe(ref.current);
   }, [ref, observer]);
 

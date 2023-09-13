@@ -105,7 +105,7 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ handleClose }) => {
         onKeyDown={handleDownEnter}
         id="outlined-basic"
         label="Task name"
-        variant="standard"
+        variant="outlined"
         size="small"
         color="primary"
         fullWidth
@@ -147,12 +147,12 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ handleClose }) => {
         className="folderForm"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        onKeyDown={handleDownEnter}
         id="outlined-multiline-static"
         label="Task description"
         variant="outlined"
         multiline
-        rows={2}
+        minRows={2}
+        maxRows={7}
         size="small"
         color="primary"
         fullWidth

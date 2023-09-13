@@ -4,6 +4,8 @@ import { useAppSelector, useAppDispatch } from '../../hooks/hook';
 import { changeDarkTheme } from '../../store/slice/darkThemeSlice';
 import { selectDarkTheme } from '../../store/selectors';
 
+import { mtColors } from '../../assets/myColors';
+
 import {
   AppBar,
   Toolbar,
@@ -30,11 +32,10 @@ const AppNav: React.FC = () => {
   return (
     <AppBar
       position="static"
-      sx={
-        darkTheme
-          ? { bgcolor: 'background.papier', boxShadow: 'none' }
-          : { bgcolor: '#EBEBEB', boxShadow: 'none' }
-      }
+      sx={{
+        boxShadow: 'none',
+        bgcolor: `${darkTheme ? mtColors.dark.bgMain : mtColors.light.bgMain}`,
+      }}
     >
       <Toolbar
         sx={{

@@ -119,7 +119,7 @@ const ChangeTodoForm = () => {
         label="Change description"
         variant="outlined"
         multiline
-        rows={2}
+        maxRows={5}
         size="small"
         color="primary"
         sx={{ width: '100%' }}

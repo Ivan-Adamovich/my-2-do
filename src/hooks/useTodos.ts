@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 
 import { Todo } from '../store/slice/todoSlice';
 import { useAppSelector } from './hook';
@@ -20,7 +20,7 @@ export const useTodos = (): Todo[] => {
   const activeFolder = useAppSelector(selectActiveFolder);
   const searchTodoTitle = useAppSelector(selectSearchTodoTitle);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (searchTodoTitle === '') {
       if (activeFolder === 'All') {
         setShowTodos(todos);

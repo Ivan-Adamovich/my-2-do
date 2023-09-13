@@ -86,7 +86,7 @@ const TodoInformation = () => {
           Title:
         </Typography>
         <Typography
-          variant="subtitle1"
+          variant="body1"
           sx={
             todo.completed
               ? {
@@ -104,7 +104,9 @@ const TodoInformation = () => {
           Description:
         </Typography>
         <Typography
-          variant="subtitle1"
+          variant="body1"
+          component="pre"
+          paragraph
           sx={
             todo.completed
               ? {

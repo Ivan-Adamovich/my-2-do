@@ -1,5 +1,8 @@
 import { useState } from 'react';
 
+import { useAppSelector } from '../../hooks/hook';
+import { selectDarkTheme } from '../../store/selectors';
+
 import {
   Typography,
   Stack,
@@ -16,6 +19,8 @@ import AddTodoForm from '../form/AddTodoForm';
 const AddTodoAccordion: React.FC = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
 
+  const darkTheme: boolean = useAppSelector(selectDarkTheme);
+
   const handleChange = () => {
     setExpanded((prev) => !prev);
   };
@@ -30,9 +35,11 @@ const AddTodoAccordion: React.FC = () => {
         expanded={expanded}
         onChange={handleChange}
         sx={{
+          bgcolor: `${darkTheme ? '#111' : '#fff'}`,
+          backgroundImage: 'unset',
           boxShadow: 'none',
-          pl: 1,
-          pr: 2,
+          pl: 2,
+          pr: 1,
         }}
       >
         <AccordionSummary

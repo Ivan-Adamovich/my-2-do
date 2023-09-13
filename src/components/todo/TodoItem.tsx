@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Todo } from '../../store/slice/todoSlice';
 import { useAppSelector } from '../../hooks/hook';
 import { selectDarkTheme } from '../../store/selectors';
+
+import { mtColors } from '../../assets/myColors';
 
 import { Typography, Tooltip, Stack } from '@mui/material';
 
@@ -20,23 +22,18 @@ interface TodoItemProps {
 const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
   const darkTheme: boolean = useAppSelector(selectDarkTheme);
 
+  const navigate = useNavigate();
+
   return (
     <Stack
-      sx={
-        darkTheme
-          ? {
-              bgcolor: 'rgb(46,46,46)',
-              mb: 1,
-              padding: '8px 16px 8px 16px',
-              borderRadius: '4px',
-            }
-          : {
-              bgcolor: 'action.selected',
-              mb: 1,
-              padding: '8px 16px 8px 16px',
-              borderRadius: '4px',
-            }
-      }
+      sx={{
+        bgcolor: `${darkTheme ? mtColors.dark.bgMain : mtColors.light.bgMain}`,
+        mb: 1,
+        padding: '8px 16px 8px 16px',
+        borderRadius: '4px',
+        cursor: 'pointer',
+      }}
+      onClick={() => navigate(`/todos/${todo.id}`)}
     >
       <Stack
         direction={{ xs: 'column', md: 'row' }}
@@ -56,30 +53,19 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
             <ToggleImpotantButton todo={todo} />
           </Stack>
           <Stack direction="row" alignItems="center" spacing={1}>
-            <Link to={`/todos/${todo.id}`}>
-              <Tooltip title="Open this Task">
-                <Typography
-                  variant="subtitle1"
-                  sx={
-                    todo.completed
-                      ? {
-                          textDecoration: 'line-through',
-                          color: 'text.primary',
-                          overflowY: 'hidden',
-                          maxHeight: '28px',
-                        }
-                      : {
-                          textDecoration: 'none',
-                          color: 'text.primary',
-                          overflowY: 'hidden',
-                          maxHeight: '28px',
-                        }
-                  }
-                >
-                  {todo.title}
-                </Typography>
-              </Tooltip>
-            </Link>
+            <Tooltip title="Open this Task">
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textDecoration: `${todo.completed ? 'line-through' : 'none'}`,
+                  color: 'text.primary',
+                  overflowY: 'hidden',
+                  maxHeight: '28px',
+                }}
+              >
+                {todo.title}
+              </Typography>
+            </Tooltip>
             {todo.description ? (
               <FilePresentIcon
                 fontSize="small"

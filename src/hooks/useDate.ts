@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useLayoutEffect, useMemo } from 'react';
 
 export const useDate = () => {
   let todayDate: string = useMemo(() => {
@@ -10,7 +10,7 @@ export const useDate = () => {
 
   const [weekDay, setWeekDay] = useState<string>('');
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     switch (weekDayNum) {
       case 0:
         setWeekDay('Sunday');

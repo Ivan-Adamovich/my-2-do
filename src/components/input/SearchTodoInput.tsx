@@ -1,6 +1,7 @@
-import { useAppDispatch, useAppSelector } from '../../hooks/hook';
+import { useState, useEffect } from 'react';
+import { useAppDispatch } from '../../hooks/hook';
 import { changeSearchTodoTitle } from '../../store/slice/filterSlice';
-import { selectSearchTodoTitle } from '../../store/selectors';
+import useDebounce from '../../hooks/useDebounce';
 
 import { TextField, Stack } from '@mui/material';
 
@@ -8,7 +9,17 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const SearchTodoInput: React.FC = () => {
   const dispatch = useAppDispatch();
-  const searchTitle = useAppSelector(selectSearchTodoTitle);
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      dispatch(changeSearchTodoTitle(searchTerm));
+    } else {
+      dispatch(changeSearchTodoTitle(''));
+    }
+  }, [debouncedSearchTerm]);
 
   return (
     <Stack
@@ -19,8 +30,8 @@ const SearchTodoInput: React.FC = () => {
     >
       <SearchIcon sx={{ color: 'primary.main' }} />
       <TextField
-        onChange={(e) => dispatch(changeSearchTodoTitle(e.target.value))}
-        value={searchTitle}
+        onChange={(event) => setSearchTerm(event.target.value)}
+        value={searchTerm}
         id="outlined-basic"
         label="Search the task"
         variant="outlined"

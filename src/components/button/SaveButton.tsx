@@ -37,15 +37,12 @@ const SaveButton: React.FC<SaveButtonProps> = ({
           <SaveIcon sx={{ color: 'primary.main' }} />
         </IconButton>
       </Tooltip>
-      {saved ? (
-        <Typography variant="body2" sx={{ color: 'primary.main' }}>
-          Changes saved
-        </Typography>
-      ) : (
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          Changes not saved
-        </Typography>
-      )}
+      <Typography
+        variant="body2"
+        sx={{ color: `${saved ? 'primary.main' : 'text.secondary'}` }}
+      >
+        {saved ? 'Changes saved' : 'Changes not saved'}
+      </Typography>
     </Stack>
   );
 };
