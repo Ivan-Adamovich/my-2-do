@@ -53,6 +53,7 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ handleClose }) => {
       setDescription('');
       setPlanned('');
       setValue(null);
+      setInportant(false);
       handleClose();
     }
     dispatch(changeSearchTodoTitle(''));
@@ -69,6 +70,7 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ handleClose }) => {
         setDescription('');
         setPlanned('');
         setValue(null);
+        setInportant(false);
         handleClose();
       }
       dispatch(changeSearchTodoTitle(''));
