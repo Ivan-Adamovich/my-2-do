@@ -1,6 +1,6 @@
 # MY2DO 
 
-[MY2DO](https://my-2-do.vercel.app/).
+[MY2DO](https://my-2-do.vercel.app/)
 
 ## Functions:
 - Adding, editing and deleting tasks
