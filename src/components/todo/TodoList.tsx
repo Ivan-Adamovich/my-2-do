@@ -1,7 +1,7 @@
 import { useTodos } from '../../hooks/useTodos';
 
 import AlertDontHaveTodo from '../alert/AlertDontHaveTodo';
-import TodoItem from '../todo/TodoItem';
+import TodoItem from './TodoItem';
 
 const TodoList: React.FC = () => {
   const showTodos = useTodos();

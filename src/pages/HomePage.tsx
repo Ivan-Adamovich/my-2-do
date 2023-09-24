@@ -6,7 +6,7 @@ import { selectActiveFilter, selectActiveFolder } from '../store/selectors';
 
 import { Container, Stack } from '@mui/material';
 
-import TodoList from '../components/list/TodoList';
+import TodoList from '../components/todo/TodoList';
 import AppNav from '../components/layout/AppNav';
 import AddTodoAccordion from '../components/accordion/AddTodoAccordion';
 import TodoBanner from '../components/todo/TodoBanner';
