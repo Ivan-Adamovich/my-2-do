@@ -16,4 +16,5 @@
 - React
 - Redux-Toolkit
 - Material UI library
+- Vite
 
