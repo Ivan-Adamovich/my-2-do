@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '..';
 
 const userDarkMode = JSON.parse(localStorage.getItem('darkMode') || 'false');
 
@@ -20,5 +21,8 @@ const darkThemeSlice = createSlice({
   },
 });
 
-export const { changeDarkTheme } = darkThemeSlice.actions;
+export const darkThemeAction = darkThemeSlice.actions;
+
+export const selectDarkTheme = (state: RootState) => state.darkTheme;
+
 export default darkThemeSlice.reducer;

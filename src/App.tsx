@@ -3,7 +3,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { selectDarkTheme } from './store/selectors';
-import { useAppSelector } from './hooks/hook';
+import { useAppSelector } from './hooks/useActions';
 
 import { useEffect } from 'react';
 

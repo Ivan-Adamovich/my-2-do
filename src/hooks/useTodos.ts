@@ -1,7 +1,7 @@
 import { useState, useLayoutEffect } from 'react';
 
 import { Todo } from '../store/slice/todoSlice';
-import { useAppSelector } from './hook';
+import { useAppSelector } from './useActions';
 import {
   selectTodos,
   selectActiveFilter,

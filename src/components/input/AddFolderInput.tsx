@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
 import { addFolder, Folder } from '../../store/slice/folderSlice';
-import { useAppDispatch, useAppSelector } from '../../hooks/hook';
+import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
 import { selectFolders } from '../../store/selectors';
 
 import { Button, TextField, Stack } from '@mui/material';

@@ -1,4 +1,4 @@
-import { useAppDispatch } from '../../hooks/hook';
+import { useAppDispatch } from '../../hooks/useActions';
 import {
   toggleActiveFolderTitle,
   toggleActiveFilterTitle,

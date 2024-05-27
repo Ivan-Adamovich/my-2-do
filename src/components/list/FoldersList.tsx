@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/hook';
+import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
 import { removeFolder, Folder } from '../../store/slice/folderSlice';
 import { changeFolderTitle } from '../../store/slice/todoSlice';
 import {

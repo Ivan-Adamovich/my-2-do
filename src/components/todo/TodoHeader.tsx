@@ -1,5 +1,5 @@
 import { selectActiveFilter, selectActiveFolder } from '../../store/selectors';
-import { useAppSelector } from '../../hooks/hook';
+import { useAppSelector } from '../../hooks/useActions';
 import { useDate } from '../../hooks/useDate';
 import { useTodos } from '../../hooks/useTodos';
 

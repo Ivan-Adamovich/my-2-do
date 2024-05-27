@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/hook';
+import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
 import { toggleSortMode } from '../../store/slice/filterSlice';
 import { sortTodos } from '../../store/slice/todoSlice';
 import { selectSortMode } from '../../store/selectors';

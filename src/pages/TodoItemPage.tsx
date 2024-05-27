@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { useAppSelector, useAppDispatch } from '../hooks/hook';
+import { useAppSelector, useAppDispatch } from '../hooks/useActions';
 import { selectTodos } from '../store/selectors';
 import { removeTodo, Todo } from '../store/slice/todoSlice';
 

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '..';
 
 export type Todo = {
   id: number;
@@ -134,15 +135,8 @@ const todoSlice = createSlice({
   },
 });
 
-export const {
-  addTodo,
-  changeTodo,
-  toggleComplete,
-  removeTodo,
-  toggleImportant,
-  sortTodos,
-  changeFolderTitle,
-  removeCompletedTodoInFolder,
-} = todoSlice.actions;
+export const todoAction = todoSlice.actions;
+
+export const selectTodos = (state: RootState) => state.todos.list;
 
 export default todoSlice.reducer;

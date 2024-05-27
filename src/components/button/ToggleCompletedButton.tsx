@@ -1,4 +1,4 @@
-import { useAppDispatch } from '../../hooks/hook';
+import { useAppDispatch } from '../../hooks/useActions';
 import { toggleComplete, Todo } from '../../store/slice/todoSlice';
 
 import { Tooltip, Checkbox } from '@mui/material';

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/hook';
+import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
 import { toggleActiveFilterTitle } from '../../store/slice/filterSlice';
 import { selectActiveFilter } from '../../store/selectors';
 

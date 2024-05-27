@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/hook';
+import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
 import { changeTodo, Todo } from '../../store/slice/todoSlice';
 import { selectTodos } from '../../store/selectors';
 

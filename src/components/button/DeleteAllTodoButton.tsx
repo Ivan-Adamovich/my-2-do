@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/hook';
+import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
 import { removeCompletedTodoInFolder } from '../../store/slice/todoSlice';
 import { selectActiveFolder } from '../../store/selectors';
 

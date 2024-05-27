@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '..';
 
 export type Folder = {
   id: number;
@@ -41,6 +42,8 @@ const folderSlice = createSlice({
   },
 });
 
-export const { addFolder, removeFolder } = folderSlice.actions;
+export const folderAction = folderSlice.actions;
+
+export const selectFolders = (state: RootState) => state.folders.folders;
 
 export default folderSlice.reducer;

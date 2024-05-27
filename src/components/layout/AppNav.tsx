@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 
-import { useAppSelector, useAppDispatch } from '../../hooks/hook';
+import { useAppSelector, useAppDispatch } from '../../hooks/useActions';
 import { changeDarkTheme } from '../../store/slice/darkThemeSlice';
 import { selectDarkTheme } from '../../store/selectors';
 

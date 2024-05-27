@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/hook';
+import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
 import { addTodo } from '../../store/slice/todoSlice';
 import { changeSearchTodoTitle } from '../../store/slice/filterSlice';
 import { selectActiveFilter, selectActiveFolder } from '../../store/selectors';

@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../hooks/hook';
+import { useAppSelector } from '../../hooks/useActions';
 import { selectActiveFolder } from '../../store/selectors';
 
 import { Box, Stack } from '@mui/material';

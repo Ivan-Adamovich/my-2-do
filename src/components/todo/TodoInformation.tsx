@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import { useAppSelector } from '../../hooks/hook';
+import { useAppSelector } from '../../hooks/useActions';
 import { Todo } from '../../store/slice/todoSlice';
 import { selectTodos } from '../../store/selectors';
 

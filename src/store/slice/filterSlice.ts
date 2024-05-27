@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '..';
 
 type FiltersState = {
   activeFilterTitle: string;
@@ -33,11 +34,17 @@ const filterSlice = createSlice({
   },
 });
 
-export const {
-  toggleActiveFilterTitle,
-  toggleActiveFolderTitle,
-  changeSearchTodoTitle,
-  toggleSortMode,
-} = filterSlice.actions;
+export const filterAction = filterSlice.actions;
+
+export const selectActiveFilter = (state: RootState) =>
+  state.filters.activeFilterTitle;
+
+export const selectActiveFolder = (state: RootState) =>
+  state.filters.activeFolderTitle;
+
+export const selectSearchTodoTitle = (state: RootState) =>
+  state.filters.searchTodoTitle;
+
+export const selectSortMode = (state: RootState) => state.filters.sortMode;
 
 export default filterSlice.reducer;

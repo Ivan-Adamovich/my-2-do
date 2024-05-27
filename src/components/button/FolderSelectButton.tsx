@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useAppSelector } from '../../hooks/hook';
+import { useAppSelector } from '../../hooks/useActions';
 import { selectFolders } from '../../store/selectors';
 import { Folder } from '../../store/slice/folderSlice';
 

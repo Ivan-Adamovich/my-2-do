@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useAppDispatch } from '../../hooks/hook';
+import { useAppDispatch } from '../../hooks/useActions';
 import { changeSearchTodoTitle } from '../../store/slice/filterSlice';
 import useDebounce from '../../hooks/useDebounce';
 
