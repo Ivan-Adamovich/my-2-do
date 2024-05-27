@@ -1,4 +1,4 @@
-import { useActions, useAppDispatch } from '../../hooks/useActions';
+import { useActions } from '../../hooks/useActions';
 import { Todo } from '../../store/slice/todoSlice';
 
 import { Tooltip, Checkbox } from '@mui/material';
@@ -13,7 +13,6 @@ interface ToggleImpotantButtonProps {
 const ToggleImpotantButton: React.FC<ToggleImpotantButtonProps> = ({
   todo,
 }) => {
-  const dispatch = useAppDispatch();
   const { toggleImportant } = useActions();
 
   return (
@@ -23,7 +22,7 @@ const ToggleImpotantButton: React.FC<ToggleImpotantButtonProps> = ({
         checkedIcon={<StarIcon sx={{ color: 'primary.main' }} />}
         onClick={(event) => {
           event.stopPropagation();
-          dispatch(toggleImportant(todo.id));
+          toggleImportant(todo.id);
         }}
         checked={todo.important}
         aria-label="important"
