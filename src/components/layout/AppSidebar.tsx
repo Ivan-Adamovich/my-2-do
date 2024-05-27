@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-import { useAppDispatch } from '../../hooks/useActions';
-import { changeSearchTodoTitle } from '../../store/slice/filterSlice';
+import { useActions } from '../../hooks/useActions';
 
 import {
   Box,
@@ -22,14 +21,14 @@ import ClearIcon from '@mui/icons-material/Clear';
 type Anchor = 'left';
 
 const AppSidebar = () => {
-  const dispatch = useAppDispatch();
+  const { changeSearchTodoTitle } = useActions();
 
   const [state, setState] = useState({
     left: false,
   });
 
   const toggleDrawer = (anchor: Anchor, open: boolean) => () => {
-    dispatch(changeSearchTodoTitle(''));
+    changeSearchTodoTitle('');
     setState({ ...state, [anchor]: open });
   };
 

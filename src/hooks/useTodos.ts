@@ -2,13 +2,14 @@ import { useState, useLayoutEffect } from 'react';
 
 import { Todo } from '../store/slice/todoSlice';
 import { useAppSelector } from './useActions';
+import { selectTodos } from '../store/slice/todoSlice';
+
+import { useDate } from './useDate';
 import {
-  selectTodos,
   selectActiveFilter,
   selectActiveFolder,
   selectSearchTodoTitle,
-} from '../store/selectors';
-import { useDate } from './useDate';
+} from '../store/slice/filterSlice';
 
 export const useTodos = (): Todo[] => {
   const { todayDate } = useDate();

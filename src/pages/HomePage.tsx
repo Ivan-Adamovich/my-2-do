@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 import { useAppSelector } from '../hooks/useActions';
 import { useElementHeight } from '../hooks/useElementHeight';
-import { selectActiveFilter, selectActiveFolder } from '../store/selectors';
 
 import { Container, Stack } from '@mui/material';
 
@@ -10,6 +9,10 @@ import TodoList from '../components/todo/TodoList';
 import AppNav from '../components/layout/AppNav';
 import AddTodoAccordion from '../components/accordion/AddTodoAccordion';
 import TodoBanner from '../components/todo/TodoBanner';
+import {
+  selectActiveFilter,
+  selectActiveFolder,
+} from '../store/slice/filterSlice';
 
 const Homepage: React.FC = () => {
   const activeFilter: string = useAppSelector(selectActiveFilter);

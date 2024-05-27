@@ -1,8 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 import { useAppSelector } from '../../hooks/useActions';
-import { Todo } from '../../store/slice/todoSlice';
-import { selectTodos } from '../../store/selectors';
+import { Todo, selectTodos } from '../../store/slice/todoSlice';
 
 import { Typography, Stack } from '@mui/material';
 

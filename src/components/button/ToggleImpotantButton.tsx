@@ -1,5 +1,5 @@
-import { useAppDispatch } from '../../hooks/useActions';
-import { toggleImportant, Todo } from '../../store/slice/todoSlice';
+import { useActions, useAppDispatch } from '../../hooks/useActions';
+import { Todo } from '../../store/slice/todoSlice';
 
 import { Tooltip, Checkbox } from '@mui/material';
 
@@ -14,6 +14,7 @@ const ToggleImpotantButton: React.FC<ToggleImpotantButtonProps> = ({
   todo,
 }) => {
   const dispatch = useAppDispatch();
+  const { toggleImportant } = useActions();
 
   return (
     <Tooltip title="Important">

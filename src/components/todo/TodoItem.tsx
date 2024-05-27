@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Todo } from '../../store/slice/todoSlice';
 import { useAppSelector } from '../../hooks/useActions';
-import { selectDarkTheme } from '../../store/selectors';
+import { selectDarkTheme } from '../../store/slice/darkThemeSlice';
 
 import { mtColors } from '../../assets/myColors';
 

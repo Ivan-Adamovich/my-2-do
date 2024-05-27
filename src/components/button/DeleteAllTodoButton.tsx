@@ -1,23 +1,22 @@
 import { useCallback } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
-import { removeCompletedTodoInFolder } from '../../store/slice/todoSlice';
-import { selectActiveFolder } from '../../store/selectors';
+import { useActions, useAppSelector } from '../../hooks/useActions';
 
 import { Button } from '@mui/material';
 
 import DeleteIcon from '@mui/icons-material/Delete';
+import { selectActiveFolder } from '../../store/slice/filterSlice';
 
 const DeleteAllTodoButton = () => {
   const activeFolder: string = useAppSelector(selectActiveFolder);
-  const dispatch = useAppDispatch();
+  const { removeCompletedTodoInFolder } = useActions();
 
   const deleteAllCompletedHandler = useCallback((folder: string) => {
     const allCompletedDeleteAlert = window.confirm(
       `Delete completed tasks? Are you sure?`
     );
     if (allCompletedDeleteAlert) {
-      dispatch(removeCompletedTodoInFolder(folder));
+      removeCompletedTodoInFolder(folder);
     }
   }, []);
 

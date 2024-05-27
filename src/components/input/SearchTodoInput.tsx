@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useAppDispatch } from '../../hooks/useActions';
-import { changeSearchTodoTitle } from '../../store/slice/filterSlice';
+import { useActions } from '../../hooks/useActions';
 import useDebounce from '../../hooks/useDebounce';
 
 import { TextField, Stack } from '@mui/material';
@@ -8,16 +7,16 @@ import { TextField, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 const SearchTodoInput: React.FC = () => {
-  const dispatch = useAppDispatch();
+  const { changeSearchTodoTitle } = useActions();
 
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   useEffect(() => {
     if (debouncedSearchTerm) {
-      dispatch(changeSearchTodoTitle(searchTerm));
+      changeSearchTodoTitle(searchTerm);
     } else {
-      dispatch(changeSearchTodoTitle(''));
+      changeSearchTodoTitle('');
     }
   }, [debouncedSearchTerm]);
 

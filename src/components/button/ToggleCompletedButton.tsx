@@ -1,5 +1,5 @@
-import { useAppDispatch } from '../../hooks/useActions';
-import { toggleComplete, Todo } from '../../store/slice/todoSlice';
+import { useActions } from '../../hooks/useActions';
+import { Todo } from '../../store/slice/todoSlice';
 
 import { Tooltip, Checkbox } from '@mui/material';
 
@@ -13,7 +13,7 @@ interface ToggleCompletedButtonProps {
 const ToggleCompletedButton: React.FC<ToggleCompletedButtonProps> = ({
   todo,
 }) => {
-  const dispatch = useAppDispatch();
+  const { toggleComplete } = useActions();
 
   return (
     <Tooltip title="Completed">
@@ -22,7 +22,7 @@ const ToggleCompletedButton: React.FC<ToggleCompletedButtonProps> = ({
         checkedIcon={<CheckBoxIcon sx={{ color: 'primary.main' }} />}
         onClick={(event) => {
           event.stopPropagation();
-          dispatch(toggleComplete(todo.id));
+          toggleComplete(todo.id);
         }}
         checked={todo.completed}
         aria-label="completed"

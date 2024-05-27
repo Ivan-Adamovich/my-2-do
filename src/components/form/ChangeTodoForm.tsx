@@ -2,9 +2,8 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
-import { changeTodo, Todo } from '../../store/slice/todoSlice';
-import { selectTodos } from '../../store/selectors';
+import { useActions, useAppSelector } from '../../hooks/useActions';
+import { selectTodos, Todo } from '../../store/slice/todoSlice';
 
 import dayjs from 'dayjs';
 import { Dayjs } from 'dayjs';
@@ -28,7 +27,7 @@ const ChangeTodoForm = () => {
   const [value, setValue] = useState<Dayjs | null>(null);
   const [saved, setSaved] = useState<boolean>(false);
 
-  const dispatch = useAppDispatch();
+  const { changeTodo } = useActions();
 
   useEffect(() => {
     if (todo.planned) {
@@ -45,7 +44,7 @@ const ChangeTodoForm = () => {
 
   const handleAction = useCallback(
     (id: number) => {
-      dispatch(changeTodo({ id, title, description, folderTitle, planned }));
+      changeTodo({ id, title, description, folderTitle, planned });
     },
     [id, title, description, folderTitle, planned]
   );

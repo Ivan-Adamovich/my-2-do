@@ -1,8 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 
-import { useAppSelector, useAppDispatch } from '../../hooks/useActions';
-import { changeDarkTheme } from '../../store/slice/darkThemeSlice';
-import { selectDarkTheme } from '../../store/selectors';
+import { useAppSelector, useActions } from '../../hooks/useActions';
+import { selectDarkTheme } from '../../store/slice/darkThemeSlice';
 
 import { mtColors } from '../../assets/myColors';
 
@@ -23,7 +22,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import AppSidebar from './AppSidebar';
 
 const AppNav: React.FC = () => {
-  const dispatch = useAppDispatch();
+  const { changeDarkTheme } = useActions();
   const location = useLocation();
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
@@ -69,7 +68,7 @@ const AppNav: React.FC = () => {
               checkedIcon={<DarkModeIcon sx={{ color: 'primary.main' }} />}
               onClick={(event) => {
                 event.stopPropagation();
-                dispatch(changeDarkTheme());
+                changeDarkTheme();
               }}
               checked={darkTheme}
               aria-label="theme"

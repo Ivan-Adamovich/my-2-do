@@ -1,13 +1,7 @@
 import { useCallback } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
-import { removeFolder, Folder } from '../../store/slice/folderSlice';
-import { changeFolderTitle } from '../../store/slice/todoSlice';
-import {
-  toggleActiveFolderTitle,
-  toggleActiveFilterTitle,
-} from '../../store/slice/filterSlice';
-import { selectFolders } from '../../store/selectors';
+import { useActions, useAppSelector } from '../../hooks/useActions';
+import { Folder, selectFolders } from '../../store/slice/folderSlice';
 
 import {
   List,
@@ -27,7 +21,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const FoldersList: React.FC = () => {
   const folders: Folder[] = useAppSelector(selectFolders);
 
-  const dispatch = useAppDispatch();
+  const {
+    toggleActiveFolderTitle,
+    toggleActiveFilterTitle,
+    changeFolderTitle,
+    removeFolder,
+  } = useActions();
 
   const deleteHandler = useCallback(
     (event: React.MouseEvent, id: number, title: string) => {
@@ -36,8 +35,8 @@ const FoldersList: React.FC = () => {
         `Delete ${title.toUpperCase()} folder? Are you sure?`
       );
       if (folderDeleteAlert) {
-        dispatch(removeFolder(id));
-        dispatch(changeFolderTitle(title));
+        removeFolder(id);
+        changeFolderTitle(title);
       }
     },
     [folders]
@@ -52,8 +51,8 @@ const FoldersList: React.FC = () => {
               <ListItem key={folder.title} disablePadding>
                 <ListItemButton
                   onClick={() => {
-                    dispatch(toggleActiveFolderTitle(folder.title));
-                    dispatch(toggleActiveFilterTitle('All'));
+                    toggleActiveFolderTitle(folder.title);
+                    toggleActiveFilterTitle('All');
                   }}
                 >
                   <ListItemIcon sx={{ color: 'primary.main' }}>

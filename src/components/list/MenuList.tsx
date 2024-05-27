@@ -1,8 +1,4 @@
-import { useAppDispatch } from '../../hooks/useActions';
-import {
-  toggleActiveFolderTitle,
-  toggleActiveFilterTitle,
-} from '../../store/slice/filterSlice';
+import { useActions } from '../../hooks/useActions';
 
 import {
   List,
@@ -20,7 +16,7 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import WbTwilightIcon from '@mui/icons-material/WbTwilight';
 
 const MenuList = () => {
-  const dispatch = useAppDispatch();
+  const { toggleActiveFolderTitle, toggleActiveFilterTitle } = useActions();
 
   return (
     <List>
@@ -28,8 +24,8 @@ const MenuList = () => {
         <ListItemButton
           sx={{ mb: 1 }}
           onClick={() => {
-            dispatch(toggleActiveFolderTitle('Today'));
-            dispatch(toggleActiveFilterTitle('All'));
+            toggleActiveFolderTitle('Today');
+            toggleActiveFilterTitle('All');
           }}
         >
           <ListItemIcon sx={{ color: 'primary.main' }}>
@@ -43,8 +39,8 @@ const MenuList = () => {
         <ListItemButton
           sx={{ mt: 1 }}
           onClick={() => {
-            dispatch(toggleActiveFolderTitle('All'));
-            dispatch(toggleActiveFilterTitle('All'));
+            toggleActiveFolderTitle('All');
+            toggleActiveFilterTitle('All');
           }}
         >
           <ListItemIcon sx={{ color: 'primary.main' }}>
@@ -56,8 +52,8 @@ const MenuList = () => {
       <ListItem disablePadding>
         <ListItemButton
           onClick={() => {
-            dispatch(toggleActiveFolderTitle('All'));
-            dispatch(toggleActiveFilterTitle('Important'));
+            toggleActiveFolderTitle('All');
+            toggleActiveFilterTitle('Important');
           }}
         >
           <ListItemIcon sx={{ color: 'primary.main' }}>
@@ -69,8 +65,8 @@ const MenuList = () => {
       <ListItem disablePadding>
         <ListItemButton
           onClick={() => {
-            dispatch(toggleActiveFolderTitle('All'));
-            dispatch(toggleActiveFilterTitle('Planned'));
+            toggleActiveFolderTitle('All');
+            toggleActiveFilterTitle('Planned');
           }}
         >
           <ListItemIcon sx={{ color: 'primary.main' }}>
@@ -82,8 +78,8 @@ const MenuList = () => {
       <ListItem disablePadding>
         <ListItemButton
           onClick={() => {
-            dispatch(toggleActiveFolderTitle('All'));
-            dispatch(toggleActiveFilterTitle('Completed'));
+            toggleActiveFolderTitle('All');
+            toggleActiveFilterTitle('Completed');
           }}
         >
           <ListItemIcon sx={{ color: 'primary.main' }}>

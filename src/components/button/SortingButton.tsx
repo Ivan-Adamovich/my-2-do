@@ -1,9 +1,7 @@
 import { useCallback } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
-import { toggleSortMode } from '../../store/slice/filterSlice';
-import { sortTodos } from '../../store/slice/todoSlice';
-import { selectSortMode } from '../../store/selectors';
+import { useActions, useAppSelector } from '../../hooks/useActions';
+import { selectSortMode } from '../../store/slice/filterSlice';
 
 import { IconButton, Tooltip } from '@mui/material';
 
@@ -12,17 +10,17 @@ import SwapVertIcon from '@mui/icons-material/SwapVert';
 const SortingButton = () => {
   const sortMode = useAppSelector(selectSortMode);
 
-  const dispatch = useAppDispatch();
+  const { toggleSortMode, sortTodos } = useActions();
 
   const toggleSortModeHeandler = useCallback(() => {
     switch (sortMode) {
       case 'Alphabet':
-        dispatch(toggleSortMode('Date'));
-        dispatch(sortTodos('Date'));
+        toggleSortMode('Date');
+        sortTodos('Date');
         break;
       case 'Date':
-        dispatch(toggleSortMode('Alphabet'));
-        dispatch(sortTodos('Alphabet'));
+        toggleSortMode('Alphabet');
+        sortTodos('Alphabet');
         break;
     }
   }, [sortMode]);

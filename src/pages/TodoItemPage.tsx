@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { useAppSelector, useAppDispatch } from '../hooks/useActions';
-import { selectTodos } from '../store/selectors';
-import { removeTodo, Todo } from '../store/slice/todoSlice';
+import { useAppSelector, useActions } from '../hooks/useActions';
+import { selectTodos, Todo } from '../store/slice/todoSlice';
 
 import { IconButton, Container, Tooltip, Stack } from '@mui/material';
 
@@ -19,7 +18,7 @@ import ToggleCompletedButton from '../components/button/ToggleCompletedButton';
 
 const TodoItemPage: React.FC = () => {
   const { id } = useParams();
-  const dispatch = useAppDispatch();
+  const { removeTodo } = useActions();
   const todos: Todo[] = useAppSelector(selectTodos);
   const todo: Todo = todos.filter((todo) => todo.id.toString() === id)[0];
 
@@ -33,7 +32,7 @@ const TodoItemPage: React.FC = () => {
     if (todoDeleteAlert) {
       navigate(-1);
       setTodoItem(null);
-      dispatch(removeTodo(id));
+      removeTodo(id);
     } else {
       return;
     }

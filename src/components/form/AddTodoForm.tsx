@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
-import { addTodo } from '../../store/slice/todoSlice';
-import { changeSearchTodoTitle } from '../../store/slice/filterSlice';
-import { selectActiveFilter, selectActiveFolder } from '../../store/selectors';
+import { useActions, useAppSelector } from '../../hooks/useActions';
+import {
+  selectActiveFilter,
+  selectActiveFolder,
+} from '../../store/slice/filterSlice';
 
 import { Dayjs } from 'dayjs';
 
@@ -28,7 +29,7 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ handleClose }) => {
   const activeFolder = useAppSelector(selectActiveFolder);
   const activeFilter = useAppSelector(selectActiveFilter);
 
-  const dispatch = useAppDispatch();
+  const { changeSearchTodoTitle, addTodo } = useActions();
 
   useEffect(() => {
     if (activeFolder !== 'All' && activeFolder !== 'Today') {
@@ -45,9 +46,7 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ handleClose }) => {
 
   const handleAction = useCallback(() => {
     if (title.trim().length) {
-      dispatch(
-        addTodo({ title, description, important, folderTitle, planned })
-      );
+      addTodo({ title, description, important, folderTitle, planned });
       setTitle('');
       setFolderTitle('');
       setDescription('');
@@ -56,15 +55,13 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ handleClose }) => {
       setInportant(false);
       handleClose();
     }
-    dispatch(changeSearchTodoTitle(''));
+    changeSearchTodoTitle('');
   }, [title, description, important, folderTitle, planned]);
 
   const handleDownEnter = useCallback(
     (event: React.KeyboardEvent) => {
       if (event.key === 'Enter' && title.trim().length) {
-        dispatch(
-          addTodo({ title, description, important, folderTitle, planned })
-        );
+        addTodo({ title, description, important, folderTitle, planned });
         setTitle('');
         setFolderTitle('');
         setDescription('');
@@ -73,7 +70,7 @@ const AddTodoForm: React.FC<AddTodoFormProps> = ({ handleClose }) => {
         setInportant(false);
         handleClose();
       }
-      dispatch(changeSearchTodoTitle(''));
+      changeSearchTodoTitle('');
     },
     [title, description, important, folderTitle, planned]
   );

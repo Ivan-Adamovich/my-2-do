@@ -1,4 +1,7 @@
-import { selectActiveFilter, selectActiveFolder } from '../../store/selectors';
+import {
+  selectActiveFilter,
+  selectActiveFolder,
+} from '../../store/slice/filterSlice';
 import { useAppSelector } from '../../hooks/useActions';
 import { useDate } from '../../hooks/useDate';
 import { useTodos } from '../../hooks/useTodos';

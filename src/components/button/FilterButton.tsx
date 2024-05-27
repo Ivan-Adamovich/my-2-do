@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
-import { toggleActiveFilterTitle } from '../../store/slice/filterSlice';
-import { selectActiveFilter } from '../../store/selectors';
+import { useActions, useAppSelector } from '../../hooks/useActions';
+import { selectActiveFilter } from '../../store/slice/filterSlice';
 
 import { IconButton, Tooltip } from '@mui/material';
 
@@ -34,13 +33,13 @@ const FilterIcon: React.FC<FiltersButtonProps> = ({ filter }) => {
 };
 
 const FiltersButton: React.FC<FiltersButtonProps> = ({ filter }) => {
-  const dispatch = useAppDispatch();
+  const { toggleActiveFilterTitle } = useActions();
   const activeFilter: string = useAppSelector(selectActiveFilter);
 
   return (
     <Tooltip title={filter}>
       <IconButton
-        onClick={() => dispatch(toggleActiveFilterTitle(filter))}
+        onClick={() => toggleActiveFilterTitle(filter)}
         size="small"
         color="primary"
         aria-label={filter}

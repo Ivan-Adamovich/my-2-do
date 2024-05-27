@@ -1,8 +1,7 @@
 import { useState, useCallback } from 'react';
 
-import { addFolder, Folder } from '../../store/slice/folderSlice';
-import { useAppDispatch, useAppSelector } from '../../hooks/useActions';
-import { selectFolders } from '../../store/selectors';
+import { Folder, selectFolders } from '../../store/slice/folderSlice';
+import { useActions, useAppSelector } from '../../hooks/useActions';
 
 import { Button, TextField, Stack } from '@mui/material';
 
@@ -10,11 +9,11 @@ const AddFolderInput: React.FC = () => {
   const folders: Folder[] = useAppSelector(selectFolders);
   const [title, setTitle] = useState<string>('');
 
-  const dispatch = useAppDispatch();
+  const { addFolder } = useActions();
 
   const handleAction = useCallback(() => {
     if (title.trim().length && folders.length < 4) {
-      dispatch(addFolder(title));
+      addFolder(title);
       setTitle('');
     }
   }, [title]);
@@ -22,7 +21,7 @@ const AddFolderInput: React.FC = () => {
   const handleDownEnter = useCallback(
     (event: React.KeyboardEvent) => {
       if (event.key === 'Enter' && title.trim().length && folders.length < 4) {
-        dispatch(addFolder(title));
+        addFolder(title);
         setTitle('');
       }
     },

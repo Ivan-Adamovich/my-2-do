@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import { useAppSelector } from '../../hooks/useActions';
-import { selectDarkTheme } from '../../store/selectors';
 
 import {
   Typography,
@@ -15,6 +14,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 
 import AddTodoForm from '../form/AddTodoForm';
+import { selectDarkTheme } from '../../store/slice/darkThemeSlice';
 
 const AddTodoAccordion: React.FC = () => {
   const [expanded, setExpanded] = useState<boolean>(false);

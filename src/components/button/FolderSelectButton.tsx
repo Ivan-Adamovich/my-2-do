@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
 import { useAppSelector } from '../../hooks/useActions';
-import { selectFolders } from '../../store/selectors';
-import { Folder } from '../../store/slice/folderSlice';
+import { Folder, selectFolders } from '../../store/slice/folderSlice';
 
 import { Divider, Button, Menu, MenuItem, Stack } from '@mui/material';
 

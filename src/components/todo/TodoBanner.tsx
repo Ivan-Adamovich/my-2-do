@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../hooks/useActions';
-import { selectActiveFolder } from '../../store/selectors';
+import { selectActiveFolder } from '../../store/slice/filterSlice';
 
 import { Box, Stack } from '@mui/material';
 

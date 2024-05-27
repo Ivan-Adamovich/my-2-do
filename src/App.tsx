@@ -2,7 +2,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import { selectDarkTheme } from './store/selectors';
 import { useAppSelector } from './hooks/useActions';
 
 import { useEffect } from 'react';
@@ -17,6 +16,7 @@ import {
 import HomePage from './pages/HomePage';
 import TodoItemPage from './pages/TodoItemPage';
 import NotFoundPage from './pages/NotfoundPage';
+import { selectDarkTheme } from './store/slice/darkThemeSlice';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
