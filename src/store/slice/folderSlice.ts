@@ -10,16 +10,16 @@ type FoldersState = {
   folders: Folder[];
 };
 
-const storeFolders = JSON.parse(
-  localStorage.getItem('folders') || '[]'
-) as Folder[];
+// const storeFolders = JSON.parse(
+//   localStorage.getItem('folders') || '[]'
+// ) as Folder[];
 
-const setLocalStorageFolders = (folders: Folder[]) => {
-  localStorage.setItem('folders', JSON.stringify(folders));
-};
+// const setLocalStorageFolders = (folders: Folder[]) => {
+//   localStorage.setItem('folders', JSON.stringify(folders));
+// };
 
 const initialState: FoldersState = {
-  folders: storeFolders,
+  folders: [],
 };
 
 const folderSlice = createSlice({
@@ -31,13 +31,13 @@ const folderSlice = createSlice({
         id: Date.now(),
         title: action.payload,
       });
-      setLocalStorageFolders(state.folders);
+      // setLocalStorageFolders(state.folders);
     },
     removeFolder(state, action: PayloadAction<number>) {
       state.folders = state.folders.filter(
         (folder) => folder.id !== action.payload
       );
-      setLocalStorageFolders(state.folders);
+      // setLocalStorageFolders(state.folders);
     },
   },
 });

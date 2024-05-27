@@ -16,16 +16,16 @@ type TodosState = {
   list: Todo[];
 };
 
-const storeTodos = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[];
-const sortStoreTodos = storeTodos.sort((a, b) => (a.id < b.id ? 1 : -1));
+// const storeTodos = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[];
+// const sortStoreTodos = storeTodos.sort((a, b) => (a.id < b.id ? 1 : -1));
 
 const initialState: TodosState = {
-  list: sortStoreTodos,
+  list: [],
 };
 
-const setLocalStorageTodos = (list: Todo[]) => {
-  localStorage.setItem('todos', JSON.stringify(list));
-};
+// const setLocalStorageTodos = (list: Todo[]) => {
+//   localStorage.setItem('todos', JSON.stringify(list));
+// };
 
 const todoSlice = createSlice({
   name: 'todos',
@@ -51,7 +51,7 @@ const todoSlice = createSlice({
         folder: action.payload.folderTitle,
         planned: action.payload.planned,
       });
-      setLocalStorageTodos(state.list);
+      // setLocalStorageTodos(state.list);
     },
     changeTodo(
       state,
@@ -75,14 +75,14 @@ const todoSlice = createSlice({
         changedTodo.date = new Date().toLocaleString().substr(0, 10);
         changedTodo.planned = action.payload.planned;
       }
-      setLocalStorageTodos(state.list);
+      // setLocalStorageTodos(state.list);
     },
     toggleComplete(state, action: PayloadAction<number>) {
       const toggledTodo = state.list.find((todo) => todo.id === action.payload);
       if (toggledTodo) {
         toggledTodo.completed = !toggledTodo.completed;
       }
-      setLocalStorageTodos(state.list);
+      // setLocalStorageTodos(state.list);
     },
     toggleImportant(state, action: PayloadAction<number>) {
       const importantTodo = state.list.find(
@@ -91,23 +91,23 @@ const todoSlice = createSlice({
       if (importantTodo) {
         importantTodo.important = !importantTodo.important;
       }
-      setLocalStorageTodos(state.list);
+      // setLocalStorageTodos(state.list);
     },
     removeTodo(state, action: PayloadAction<number>) {
       state.list = state.list.filter((todo) => todo.id !== action.payload);
-      setLocalStorageTodos(state.list);
+      // setLocalStorageTodos(state.list);
     },
     sortTodos(state, action: PayloadAction<string>) {
       if (action.payload === 'Alphabet') {
         state.list = state.list.sort((a: Todo, b: Todo) =>
           a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1
         );
-        setLocalStorageTodos(state.list);
+        // setLocalStorageTodos(state.list);
       } else if (action.payload === 'Date') {
         state.list = state.list.sort((a: Todo, b: Todo) =>
           a.id < b.id ? 1 : -1
         );
-        setLocalStorageTodos(state.list);
+        // setLocalStorageTodos(state.list);
       } else {
         return;
       }
@@ -116,7 +116,7 @@ const todoSlice = createSlice({
       state.list.forEach((todo) => {
         if (todo.folder === action.payload) {
           todo.folder = '';
-          setLocalStorageTodos(state.list);
+          // setLocalStorageTodos(state.list);
         } else {
           return;
         }
@@ -130,7 +130,7 @@ const todoSlice = createSlice({
           (todo) => todo.completed === false && todo.folder === action.payload
         );
       }
-      setLocalStorageTodos(state.list);
+      // setLocalStorageTodos(state.list);
     },
   },
 });
